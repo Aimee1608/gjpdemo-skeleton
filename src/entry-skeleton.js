@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import Skeleton from './Skeleton/skeleton.vue'
-import SkeletonDetail from './Skeleton/skeleton-detail.vue'
-import SkeletonIndex from './Skeleton/skeleton-index.vue'
-import SkeletonList from './Skeleton/skeleton-list.vue'
+import Skeleton from './skeleton/skeleton.vue'
+import SkeletonDetail from './skeleton/skeleton-detail.vue'
+import SkeletonIndex from './skeleton/skeleton-index.vue'
+import SkeletonList from './skeleton/skeleton-list.vue'
 export default new Vue({
   components: {
     Skeleton,
