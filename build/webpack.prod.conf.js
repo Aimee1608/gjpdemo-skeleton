@@ -11,7 +11,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin')
-
+const OmmitCSSPlugin = require('./ommit-css-webpack-plugin')
+// const { SkeletonPlugin } = require('page-skeleton-webpack-plugin')
 const env = require('../config/prod.env')
 
 const webpackConfig = merge(baseWebpackConfig, {
@@ -26,7 +27,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
@@ -65,13 +66,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: config.build.index,
       template: 'index.html',
       inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
-      },
+      minify: false,
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
@@ -117,20 +112,38 @@ const webpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ]),
+    // new OmmitCSSPlugin(),
     new SkeletonWebpackPlugin({
       webpackConfig: require('./webpack.skeleton.conf'),
       quiet: true,
       minimize: true,
       router: {
-        mode: 'history',
+        mode: 'hash',
         routes: [
           {
-            path: '/client/a/Quiksns/comment',    //对应使用路由
+            path: '/',    //对应使用路由
             skeletonId: 'skeleton1'    // 所用骨架屏的id标识
           },
+          {
+            path: '/detail',    //对应使用路由
+            skeletonId: 'SkeletonDetail'    // 所用骨架屏的id标识
+          },
+          {
+            path: '/index',    //对应使用路由
+            skeletonId: 'SkeletonIndex'    // 所用骨架屏的id标识
+          },
+          {
+            path: '/list',    //对应使用路由
+            skeletonId: 'SkeletonList'    // 所用骨架屏的id标识
+          }
         ]
       }
     })
+    // new SkeletonPlugin({
+    //   pathname: path.resolve(__dirname, './shell'), // the path to store shell file
+    //   staticDir: path.resolve(__dirname, './dist'), // the same as the `output.path`
+    //   routes: ['/detail', '/list'], // Which routes you want to generate skeleton screen
+    // })
   ]
 })
 

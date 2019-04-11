@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import detail from '@/views/detail'
-import index from '@/views/index'
-import list from '@/views/list'
+// import HelloWorld from '@/components/HelloWorld'
+// import detail from '@/views/detail'
+// import index from '@/views/index'
+// import list from '@/views/list'
 Vue.use(Router)
 
 export default new Router({
@@ -11,23 +11,22 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      redirect: 'index'
     },
     {
       path: '/detail',
       name: 'detail',
-      component: detail
+      component: () => import('@/views/detail')
     },
     {
       path: '/index',
       name: 'index',
-      component: index
+      component: () => import('@/views/index')
     },
     {
       path: '/list',
       name: 'list',
-      component: list
+      component: () => import('@/views/list')
     }
   ]
 })

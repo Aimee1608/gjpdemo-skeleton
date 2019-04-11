@@ -27,6 +27,7 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
+    chunkFilename: '[name].js', //以文件名为最终打包的名称
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
@@ -75,6 +76,10 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
+      // {
+      //   test: /\.css$/,   //这是注释掉的模块，一开始很疑惑加入css的编译模块马上就报错了，注释掉之后sass代码照样可以成功编译。
+      //   loader: ["vue-style-loader", "css-loader"]
+      // }
     ]
   },
   node: {

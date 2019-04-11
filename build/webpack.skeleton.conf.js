@@ -23,9 +23,9 @@ let skeletonWebpackConfig = merge(baseWebpackConfig, {
   output: Object.assign({}, baseWebpackConfig.output, {
     libraryTarget: 'commonjs2'
   }),
-  externals: nodeExternals({
-    whitelist: /\.css$/
-  }),
+  // externals: nodeExternals({
+  //   whitelist: /\.css$/
+  // }),
   plugins: []
 })
 

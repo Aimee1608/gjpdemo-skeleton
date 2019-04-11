@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>traceid 、 rcpid</h1>
+  <script src="//lib04.xesimg.com/lib/jQuery/1.11.1/jquery.min.js"></script>
+  <script src="//activity.xueersi.com/topic/growth/weblog/pc/xes.md5.min.js"></script>
+  <script src="//activity.xueersi.com/topic/growth/weblog/pc/xes.weblog.event.min.js"></script>
+ <script>
+ $(function(){
+    $.ajax({
+      // url: 'http://testgslb.xueersi.com/xueersi_gslb/live?cmd=live_get_playserver&userid=2386185&username=%E6%B5%8B%E8%AF%95%E8%B4%A6%E5%8F%B7&channelname=x_2_11985_2480&protocol=flv&hasAnti=1',
+      url: 'https://chatgslb.xescdn.com/getserver?appid=2&liveid=11985',
+      dataType: 'json',
+      success: function(res) {
+        console.log(res)
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+ })
+ </script>
+</body>
+</html>
